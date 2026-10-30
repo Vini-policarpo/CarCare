@@ -1,0 +1,40 @@
+.indicador {
+  min-height: 148px;
+  padding: 20px;
+  border: 1px solid #dde3e9;
+  border-radius: 2px;
+  background: white;
+}
+
+.indicador {
+  display: flex;
+  justify-content: space-between;
+}
+
+.indicador span,
+.indicador small {
+  display: block;
+  color: #5f6d7b;
+  font-size: 12px;
+}
+
+.indicador strong {
+  display: block;
+  font-size: 30px;
+  margin: 14px 0 6px;
+}
+
+.indicador b {
+  width: 30px;
+  height: 30px;
+  border-radius: 2px;
+  display: grid;
+  place-items: center;
+  background: #faf0f2;
+  color: #800c1f;
+}
+
+.indicador b img {
+  width: 18px;
+  height: 18px;
+}

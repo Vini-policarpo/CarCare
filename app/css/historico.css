@@ -1,0 +1,15 @@
+.indicadores.resumo article small {
+  display: block;
+  color: #5f6d7b;
+  font-size: 12px;
+}
+
+.indicadores.resumo.dois {
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 680px) {
+  .indicadores.resumo.dois {
+    grid-template-columns: 1fr;
+  }
+}

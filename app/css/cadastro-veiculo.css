@@ -1,0 +1,104 @@
+.formulario_titulo p {
+  margin-bottom: 0;
+  color: #5f6d7b;
+  font-size: 14px;
+}
+
+a.fechar {
+  cursor: pointer;
+}
+
+.sobreposicao {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+  background: rgba(21, 29, 35, 0.68);
+}
+
+.sobreposicao .caixa {
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.formulario_titulo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.cadastro-veiculo {
+  max-width: 760px;
+  padding: 40px;
+  margin: auto;
+}
+
+.cadastro-veiculo form {
+  gap: 20px;
+}
+
+.cadastro-veiculo input {
+  height: 48px;
+}
+
+.cadastro-veiculo select {
+  min-height: 48px;
+}
+
+.cadastro-veiculo textarea {
+  resize: vertical;
+}
+
+.cadastro-veiculo,
+.cadastro-veiculo input,
+.cadastro-veiculo .botao {
+  border-radius: 2px;
+}
+
+.fechar {
+  border: 0;
+  background: none;
+  font-size: 28px;
+  color: #5f6d7b;
+}
+
+.colunas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+a.fechar {
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .sobreposicao {
+    padding: 0;
+    align-items: flex-start;
+  }
+
+  .cadastro-veiculo {
+    min-height: 100vh;
+    padding: 26px 18px;
+  }
+
+  .colunas {
+    grid-template-columns: 1fr;
+  }
+
+  .acoes {
+    flex-direction: column-reverse;
+  }
+}
