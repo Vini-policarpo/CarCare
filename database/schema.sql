@@ -50,7 +50,7 @@ CREATE TABLE manutencoes (
 	funcionario_id		    INT,
 	data_agendamento	    DATETIME NOT NULL,
 	data_conclusao		    DATETIME,
-	status 		            ENUM(‘Agendado’, ‘Em Andamento’, ‘Concluído’, ‘Cancelado’) DEFAULT ‘Agendado’,
+	status 		            ENUM('Agendado', 'Em Andamento', 'Concluído', 'Cancelado') DEFAULT 'Agendado',
 	descricao			    VARCHAR(390),
 	proxima_manutencao_data	DATE,
 	proxima_manutencao_km	INT,
