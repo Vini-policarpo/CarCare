@@ -6,7 +6,7 @@ protegerPagina();
 $paginaAtual = 'inicio';
 
 if (usuarioEhFuncionario()) {
-    // O funcionário acompanha os números oficina :VV.
+    // O funcionário acompanha os status oficina :VV.
     $totalVeiculos = $pdo->query('SELECT COUNT(*) FROM veiculos')->fetchColumn();
 
     $resumo = $pdo->query(
@@ -20,7 +20,7 @@ if (usuarioEhFuncionario()) {
          FROM manutencoes"
     )->fetch();
 } else {
-    // O cliente acompanha somente os dados ligados ao próprio perfil.
+    // O cliente acompanha somente os dados do próprio perfil.
     $consultaVeiculos = $pdo->prepare(
         'SELECT COUNT(*) FROM veiculos WHERE cliente_id = ?'
     );

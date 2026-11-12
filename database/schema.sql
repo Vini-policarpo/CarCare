@@ -1,10 +1,4 @@
-CREATE DATABASE IF NOT EXISTS carcare
-CHARACTER SET utf8mb4
-COLLATE utf8mb4_unicode_ci;
-
-USE carcare;
-
--- Contas usadas para entrar no sistema.
+-- Contas
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(120) NOT NULL,
@@ -14,7 +8,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Dados dos clientes/proprietários.
+-- guardar as infos
 CREATE TABLE IF NOT EXISTS clientes (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT UNSIGNED NULL UNIQUE,
@@ -24,7 +18,7 @@ CREATE TABLE IF NOT EXISTS clientes (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
--- Dados dos funcionários que atendem os clientes.
+-- funcionario mexer no status do cliente
 CREATE TABLE IF NOT EXISTS funcionarios (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT UNSIGNED NULL UNIQUE,
@@ -33,7 +27,6 @@ CREATE TABLE IF NOT EXISTS funcionarios (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
--- Veículos pertencem a um cliente.
 CREATE TABLE IF NOT EXISTS veiculos (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     cliente_id INT UNSIGNED NOT NULL,
@@ -46,7 +39,6 @@ CREATE TABLE IF NOT EXISTS veiculos (
     FOREIGN KEY (cliente_id) REFERENCES clientes(id)
 );
 
--- Catálogo de serviços oferecidos pela oficina.
 CREATE TABLE IF NOT EXISTS servicos (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(120) NOT NULL,
@@ -55,7 +47,6 @@ CREATE TABLE IF NOT EXISTS servicos (
     ativo TINYINT(1) NOT NULL DEFAULT 1
 );
 
--- Catálogo de peças.
 CREATE TABLE IF NOT EXISTS pecas (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -63,7 +54,6 @@ CREATE TABLE IF NOT EXISTS pecas (
     estoque INT NOT NULL DEFAULT 0
 );
 
--- O cliente cria a solicitação e o funcionário controla o andamento.
 CREATE TABLE IF NOT EXISTS manutencoes (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     veiculo_id INT UNSIGNED NOT NULL,
@@ -83,7 +73,6 @@ CREATE TABLE IF NOT EXISTS manutencoes (
     FOREIGN KEY (servico_id) REFERENCES servicos(id) ON DELETE SET NULL
 );
 
--- Peças utilizadas em cada manutenção.
 CREATE TABLE IF NOT EXISTS manutencao_pecas (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     manutencao_id INT UNSIGNED NOT NULL,
@@ -93,7 +82,7 @@ CREATE TABLE IF NOT EXISTS manutencao_pecas (
     FOREIGN KEY (peca_id) REFERENCES pecas(id)
 );
 
--- Cliente e carro fictícios solicitados pelo grupo.
+-- aqui a gente criou um carro ficticio inicial pra testar auto completar
 INSERT INTO clientes (nome, telefone, email)
 SELECT 'Lucas Andrade Silva', '(11) 99999-0000', 'lucas.exemplo@carcare.local'
 WHERE NOT EXISTS (
@@ -107,7 +96,7 @@ WHERE clientes.email = 'lucas.exemplo@carcare.local'
   AND NOT EXISTS (SELECT id FROM veiculos WHERE placa = 'BRA2E19')
 LIMIT 1;
 
--- Serviços iniciais para o cliente conseguir fazer uma solicitação.
+
 INSERT INTO servicos (nome, descricao, valor)
 SELECT 'Troca de óleo', 'Troca do óleo e verificação do filtro', 180.00
 WHERE NOT EXISTS (SELECT id FROM servicos WHERE nome = 'Troca de óleo');

@@ -1,6 +1,3 @@
--- Execute este arquivo apenas uma vez no banco que já estava funcionando.
--- Ele preserva os veículos e as manutenções existentes.
-
 ALTER TABLE usuarios
     ADD COLUMN tipo VARCHAR(20) NOT NULL DEFAULT 'cliente' AFTER senha;
 
@@ -18,10 +15,10 @@ CREATE TABLE servicos (
     ativo TINYINT(1) NOT NULL DEFAULT 1
 );
 
+
 ALTER TABLE manutencoes
     ADD COLUMN servico_id INT UNSIGNED NULL AFTER funcionario_id;
 
--- VARCHAR evita o problema que ocorreu com acentos dentro do ENUM.
 ALTER TABLE manutencoes
     MODIFY COLUMN status VARCHAR(30) NOT NULL DEFAULT 'Solicitado';
 
@@ -31,7 +28,7 @@ UPDATE manutencoes SET status = 'Concluido' WHERE status IN ('Concluído', 'Conc
 UPDATE manutencoes SET status = 'Concluido' WHERE status = 'Concludo';
 UPDATE manutencoes SET status = 'Cancelado' WHERE status = 'Cancelada';
 
--- Liga clientes antigos às contas de login quando nome ou e-mail coincidem.
+
 UPDATE clientes
 INNER JOIN usuarios
     ON clientes.email = usuarios.email
@@ -41,7 +38,8 @@ SET clientes.usuario_id = usuarios.id,
 WHERE clientes.usuario_id IS NULL
   AND usuarios.tipo = 'cliente';
 
--- Cria um perfil de cliente para contas antigas que ainda não tinham perfil.
+
+
 INSERT INTO clientes (usuario_id, nome, email)
 SELECT usuarios.id, usuarios.nome, usuarios.email
 FROM usuarios

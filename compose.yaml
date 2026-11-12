@@ -6,7 +6,7 @@ services:
       APP_ENV: ${APP_ENV:-production}
       DB_HOST: ${DB_HOST:-db}
       DB_PORT: ${DB_PORT:-3306}
-      DB_DATABASE: ${DB_DATABASE:-carcare}
+      DB_DATABASE: ${DB_DATABASE:-integrador}
       DB_USERNAME: ${DB_USERNAME:-integrador}
       DB_PASSWORD: ${DB_PASSWORD:?Informe DB_PASSWORD}
       SERVICE_URL_APP: /
@@ -22,7 +22,7 @@ services:
       context: .
       dockerfile: docker/mysql/Dockerfile
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE:-carcare}
+      MYSQL_DATABASE: ${DB_DATABASE:-integrador}
       MYSQL_USER: ${DB_USERNAME:-integrador}
       MYSQL_PASSWORD: ${DB_PASSWORD:?Informe DB_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?Informe DB_ROOT_PASSWORD}

@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-/** Protege nomes de tabelas e colunas, que não podem usar placeholders PDO. */
 function identifier(string $name): string
 {
     if (!preg_match('/^[A-Za-z_][A-Za-z0-9_]*$/D', $name)) {
@@ -12,7 +11,6 @@ function identifier(string $name): string
     return "`{$name}`";
 }
 
-/** Insere um registro e devolve seu ID. */
 function create(PDO $pdo, string $table, array $data): string
 {
     if ($data === []) {
@@ -30,7 +28,7 @@ function create(PDO $pdo, string $table, array $data): string
     return $pdo->lastInsertId();
 }
 
-/** Lista registros. Use ? no filtro e envie os valores em $params. */
+
 function readAll(PDO $pdo, string $table, ?string $where = null, array $params = []): array
 {
     $table = identifier($table);
@@ -46,7 +44,6 @@ function readAll(PDO $pdo, string $table, ?string $where = null, array $params =
     return $statement->fetchAll();
 }
 
-/** Busca o primeiro registro correspondente. */
 function read(PDO $pdo, string $table, ?string $where = null, array $params = []): array|false
 {
     $table = identifier($table);
@@ -62,7 +59,6 @@ function read(PDO $pdo, string $table, ?string $where = null, array $params = []
     return $statement->fetch();
 }
 
-/** Atualiza registros e devolve a quantidade alterada. */
 function update(PDO $pdo, string $table, array $data, string $where, array $params = []): int
 {
     if ($data === []) {
@@ -86,7 +82,7 @@ function update(PDO $pdo, string $table, array $data, string $where, array $para
     return $statement->rowCount();
 }
 
-/** Exclui registros e devolve a quantidade removida. */
+
 function delete(PDO $pdo, string $table, string $where, array $params = []): int
 {
     if (trim($where) === '') {
