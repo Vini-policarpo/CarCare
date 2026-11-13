@@ -11,7 +11,7 @@ require_once __DIR__ . '/banco/crud.php';
 function protegerPagina()
 {
     if (!isset($_SESSION['usuario_id'])) {
-        header('Location: login.php');
+        header('Location: apresentacao.php');
         exit;
     }
 }

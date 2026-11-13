@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="login">
   <main class="login_layout">
     <section class="login_apresentacao">
-      <a class="marca login_marca" href="login.php">
+      <a class="marca login_marca" href="apresentacao.php">
         <img class="logo" src="imagens/logo-carcare.png" alt="Logo do CarCare">
         <strong>CARCARE</strong>
       </a>
