@@ -87,7 +87,6 @@ if (usuarioEhCliente()) {
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/manutencoes.css">
-  <link rel="stylesheet" href="css/maps.css">
 </head>
 <body>
   <div class="app">
@@ -95,6 +94,9 @@ if (usuarioEhCliente()) {
 
     <main class="conteudo">
       <section class="pagina" id="pagina-manutencoes">
+        <div class="layout-manutencoes">
+          <div class="coluna-acompanhamento">
+
         <?php if ($mensagem !== ''): ?>
           <div class="alerta <?php echo $mensagemErro ? 'erro' : 'sucesso'; ?>"><?php echo textoSeguro($mensagem); ?></div>
         <?php endif; ?>
@@ -191,22 +193,34 @@ if (usuarioEhCliente()) {
             </table>
           </div>
         <?php endif; ?>
+          </div>
 
         <?php if (usuarioEhCliente()): ?>
           <form class="bloco-manutencao" id="solicitar-manutencao" action="agendar-manutencao.php" method="post">
-            <!-- Coluna 1: Logo + Mapa -->
+            <header class="cabecalho-agendamento">
+
+              <h2>Pontos de manutenção</h2>
+              <p>Escolha uma unidade e veja uma estimativa antes de solicitar o atendimento.</p>
+            </header>
+
             <div class="coluna-mapa">
-              <div class="marca">
-                <img class="logo" src="imagens/logo-carcare.png" alt="Logo do CarCare">
-                <div><h2><strong>PONTOS DE MANUTENÇÃO</strong></h2></div>
+              <div class="mapa-topo">
+                <div>
+                  <strong>Unidades CarCare</strong>
+                  <span>Selecione um ponto próximo de você</span>
+                </div>
               </div>
-              <div id="mapa" class="maps"></div>
+              <div id="mapa" class="maps" role="region" aria-label="Mapa com unidades de manutenção CarCare"></div>
             </div>
 
-            <!-- Coluna 2: Campos do formulário -->
             <div class="coluna-campos">
+              <div class="cabecalho-orcamento">
+                <strong>Orçamento inicial</strong>
+                <span>Preencha os dados do atendimento</span>
+              </div>
+
               <label class="campo-box">
-                <span>Carro</span>
+                <span>Veículo</span>
                 <select name="veiculo_id" required>
                   <option value="">Selecione o veículo</option>
                   <?php foreach ($veiculos as $veiculo): ?>
@@ -218,7 +232,7 @@ if (usuarioEhCliente()) {
               </label>
 
               <label class="campo-box">
-                <span>Serviços ou peças</span>
+                <span>Serviço ou peça</span>
                 <select name="servico_id" id="select-servico" required>
                   <option value="" data-valor="0">Selecione o serviço</option>
                   <?php foreach ($servicos as $servico): ?>
@@ -232,8 +246,8 @@ if (usuarioEhCliente()) {
               </label>
 
               <label class="campo-box">
-                <span>Local (autocomplete)</span>
-                <input type="text" name="local" id="campo-local" list="unidades-carcare" placeholder="Digite ou escolha a unidade" autocomplete="off" required>
+                <span>Unidade de atendimento</span>
+                <input type="text" name="local" id="campo-local" list="unidades-carcare" placeholder="Digite ou escolha uma unidade" autocomplete="off" required>
                 <datalist id="unidades-carcare"></datalist>
               </label>
 
@@ -244,22 +258,25 @@ if (usuarioEhCliente()) {
                 </label>
 
                 <label class="campo-box">
-                  <span>Quilometragem do carro</span>
+                  <span>Quilometragem</span>
                   <input name="quilometragem" type="number" min="0" placeholder="Ex: 45000" value="<?php echo textoSeguro($quilometragem); ?>" required>
                 </label>
               </div>
             </div>
 
-            <!-- Coluna 3: Preço médio + Botão -->
             <div class="coluna-preco">
+              <div class="resumo-preco">
+                <span>Estimativa do serviço</span>
+                <strong class="valor-destaque" id="preco-estimado">R$ 0,00</strong>
+              </div>
               <p class="aviso-preco">
-                PREÇO MÉDIO, ESSE PREÇO NÃO É OFICIAL, SERÁ AVALIADO PRIMEIRO PRESENCIALMENTE
+                Valor de referência. O orçamento final será confirmado após a avaliação presencial.
               </p>
-              <strong class="valor-destaque" id="preco-estimado">R$ 0,00</strong>
-              <button type="submit" class="botao-solicitar">SOLICITAR MANUTENÇÃO</button>
+              <button type="submit" class="botao-solicitar">Solicitar manutenção</button>
             </div>
           </form>
         <?php endif; ?>
+        </div>
       </section>
     </main>
   </div>

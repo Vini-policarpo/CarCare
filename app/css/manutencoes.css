@@ -1,9 +1,47 @@
+#pagina-manutencoes {
+  max-width: 1480px;
+}
+
+.layout-manutencoes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(390px, 420px);
+  gap: 28px;
+  align-items: start;
+}
+
+.coluna-acompanhamento {
+  min-width: 0;
+}
+
+.coluna-acompanhamento:only-child {
+  grid-column: 1 / -1;
+}
+
+#pagina-manutencoes .cabecalho {
+  min-height: auto;
+}
+
+#pagina-manutencoes .indicadores {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+#pagina-manutencoes .indicadores.resumo article {
+  min-height: 116px;
+  padding: 18px;
+}
+
 #pagina-manutencoes .indicadores article span {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 #pagina-manutencoes .indicadores article strong {
-  font-size: 36px;
+  margin: 10px 0 0;
+  font-size: 32px;
+  line-height: 1;
+}
+
+#pagina-manutencoes .central {
+  min-height: 430px;
 }
 
 #pagina-manutencoes .central h2 {
@@ -14,208 +52,352 @@
   font-size: 15px;
 }
 
-/* Card principal de agendamento do cliente */
+/* Painel lateral de localização e orçamento */
 .bloco-manutencao {
-  background-color: #151d23;
-  color-scheme: dark;
-  margin-top: 32px;
-  padding: 28px;
+  margin: 0;
+  overflow: hidden;
   display: grid;
-  grid-template-columns: 1.15fr 1fr 1fr;
-  gap: 28px;
-  align-items: center;
+  gap: 0;
+  align-self: start;
+  color: #202e36;
+  color-scheme: light;
+  background: #ffffff;
+  border: 1px solid #dfe4e9;
 }
 
-.bloco-manutencao h2,
-.bloco-manutencao h3,
-.bloco-manutencao p {
-  color: #ffffff;
+.cabecalho-agendamento {
+  padding: 24px 24px 20px;
+  border-bottom: 1px solid #edf0f3;
+}
+
+.cabecalho-agendamento .etiqueta-secao {
+  display: block;
+  margin-bottom: 8px;
+  color: #800c1f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cabecalho-agendamento h2 {
+  margin: 0 0 7px;
+  color: #202e36;
+  font-size: 23px;
+  line-height: 1.25;
+}
+
+.cabecalho-agendamento p {
+  margin: 0;
+  color: #667482;
+  font-size: 13px;
+  line-height: 1.55;
 }
 
 .bloco-manutencao .coluna-mapa {
+  min-width: 0;
+  padding: 20px 24px 24px;
+  border-bottom: 1px solid #edf0f3;
+}
+
+.mapa-topo {
+  margin-bottom: 13px;
   display: flex;
-  flex-direction: column;
-  gap: 14px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-.bloco-manutencao .marca {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.mapa-topo strong,
+.mapa-topo span {
+  display: block;
 }
 
-.bloco-manutencao .marca .logo {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
+.mapa-topo strong {
+  margin-bottom: 3px;
+  color: #202e36;
+  font-size: 14px;
 }
 
-.bloco-manutencao .marca h2 {
-  font-size: 24px;
-  margin: 0;
-  margin-left: 35px;
+.mapa-topo div > span {
+  color: #6b7885;
+  font-size: 11px;
+}
+
+.mapa-topo .quantidade-unidades {
+  flex: 0 0 auto;
+  padding: 5px 8px;
+  color: #800c1f;
+  background: #faf0f2;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
 }
 
 #mapa.maps {
   width: 100%;
-  height: 250px;
+  height: 235px;
   overflow: hidden;
+  border: 1px solid #dfe4e9;
+  border-radius: 8px;
+  background: #e9edf1;
+  box-shadow: none;
 }
 
 #mapa .maplibregl-popup-content {
-  color: #0f172a;
+  padding: 12px 14px;
+  color: #202e36;
+  border-radius: 6px;
+  font-family: "Manrope", Arial, sans-serif;
+  box-shadow: 0 8px 24px rgba(21, 29, 35, 0.18);
+}
+
+#mapa .maplibregl-ctrl-group {
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(21, 29, 35, 0.16);
 }
 
 .bloco-manutencao .coluna-campos {
-  display: flex;
-  flex-direction: column;
-  gap: 26px;
+  padding: 22px 24px 24px;
+  display: grid;
+  gap: 15px;
+}
+
+.cabecalho-orcamento {
+  margin-bottom: 1px;
+}
+
+.cabecalho-orcamento strong,
+.cabecalho-orcamento span {
+  display: block;
+}
+
+.cabecalho-orcamento strong {
+  margin-bottom: 3px;
+  color: #202e36;
+  font-size: 15px;
+}
+
+.cabecalho-orcamento span {
+  color: #6b7885;
+  font-size: 11px;
 }
 
 .bloco-manutencao .campo-box {
-  position: relative;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  background-color: #800c1f;
-  padding: 8px 12px;
-  box-sizing: border-box;
+  min-width: 0;
+  display: grid;
+  gap: 7px;
+  color: #34424d;
+  font-size: 12px;
+  font-weight: 700;
 }
 
-.bloco-manutencao .campo-box span {
+.bloco-manutencao .campo-box > span {
+  color: #4f5d69;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.025em;
   text-transform: uppercase;
-  color: #ffffff;
 }
 
 .bloco-manutencao .campo-box select,
 .bloco-manutencao .campo-box input {
   width: 100%;
-  border: none;
-  background: transparent;
-  font-size: 14px;
-  font-weight: 600;
-  color: #ffffff;
-  outline: none;
+  height: 44px;
+  min-width: 0;
+  padding: 0 12px;
+  border: 1px solid #d8dee4;
+  border-radius: 5px;
+  outline: 0;
+  background: #ffffff;
+  color: #202e36;
+  font-size: 13px;
+  font-weight: 500;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.bloco-manutencao .campo-box select option {
-  background-color: #151d23;
-  color: #ffffff;
+.bloco-manutencao .campo-box select {
+  padding-right: 34px;
+}
+
+.bloco-manutencao .campo-box select:focus,
+.bloco-manutencao .campo-box input:focus {
+  border-color: #800c1f;
+  box-shadow: 0 0 0 3px rgba(128, 12, 31, 0.1);
 }
 
 .bloco-manutencao .campo-box input::placeholder {
-  color: rgba(255, 255, 255, 0.78);
+  color: #97a2ac;
   opacity: 1;
 }
 
 .bloco-manutencao .campo-box input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
   cursor: pointer;
 }
 
 .bloco-manutencao .campo-box input:-webkit-autofill,
 .bloco-manutencao .campo-box input:-webkit-autofill:hover,
 .bloco-manutencao .campo-box input:-webkit-autofill:focus {
-  -webkit-text-fill-color: #ffffff;
-  -webkit-box-shadow: 0 0 0 1000px #800c1f inset;
-  transition: background-color 5000s ease-in-out 0s;
-}
-
-.lista-unidades {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  background-color: #151d23;
-  border: 1px solid #800c1f;
-  border-top: none;
-  max-height: 190px;
-  overflow-y: auto;
-  display: none;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
-}
-
-.lista-unidades.aberta {
-  display: block;
-}
-
-.lista-unidades button {
-  width: 100%;
-  text-align: left;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-  padding: 10px 12px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  display: block;
-}
-
-.lista-unidades button:last-child {
-  border-bottom: none;
-}
-
-.lista-unidades button:hover {
-  background-color: #800c1f;
+  -webkit-text-fill-color: #202e36;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
 }
 
 .bloco-manutencao .linha-dupla {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
 }
 
 .bloco-manutencao .coluna-preco {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 16px;
+  padding: 22px 24px 24px;
+  display: grid;
+  gap: 14px;
+  color: #ffffff;
+  background: #151d23;
 }
 
-.bloco-manutencao .aviso-preco {
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: #e2e8f0;
-  max-width: 260px;
-  margin: 0;
+.bloco-manutencao .resumo-preco {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.bloco-manutencao .resumo-preco > span {
+  padding-bottom: 4px;
+  color: #c9d1d8;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
 }
 
 .bloco-manutencao .valor-destaque {
-  font-size: 36px;
-  font-weight: 800;
+  flex: 0 0 auto;
   color: #ffffff;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.bloco-manutencao .aviso-preco {
+  margin: 0;
+  color: #aeb9c2;
+  font-size: 11px;
+  line-height: 1.5;
 }
 
 .bloco-manutencao .botao-solicitar {
-  background-color: #800c1f;
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid #800c1f;
+  border-radius: 5px;
+  background: #800c1f;
   color: #ffffff;
-  border: none;
-  border-radius: 2px;
-  padding: 14px 26px;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 800;
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s, transform 0.1s;
+  transition: background-color 0.2s, border-color 0.2s, transform 0.15s;
 }
 
 .bloco-manutencao .botao-solicitar:hover {
-  background-color: #ffffff;
-  color: #800c1f;
+  border-color: #a01931;
+  background: #a01931;
   transform: translateY(-1px);
 }
 
-/* Adaptação para telas menores */
-@media (max-width: 960px) {
+.bloco-manutencao .botao-solicitar:focus-visible,
+.bloco-manutencao select:focus-visible {
+  outline: 3px solid rgba(128, 12, 31, 0.25);
+  outline-offset: 2px;
+}
+
+@media (min-width: 1500px) {
+  .layout-manutencoes {
+    grid-template-columns: minmax(0, 1fr) 440px;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 1260px) and (min-width: 1101px) {
+  .layout-manutencoes {
+    grid-template-columns: minmax(0, 1fr) 370px;
+    gap: 22px;
+  }
+
+  .cabecalho-agendamento,
+  .bloco-manutencao .coluna-mapa,
+  .bloco-manutencao .coluna-campos,
+  .bloco-manutencao .coluna-preco {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  #pagina-manutencoes .indicadores article span {
+    min-height: 30px;
+    line-height: 1.3;
+  }
+}
+
+@media (max-width: 1160px) and (min-width: 1101px) {
+  #pagina-manutencoes .indicadores {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1100px) {
+  .layout-manutencoes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .bloco-manutencao {
+    width: 100%;
+    max-width: 760px;
+    justify-self: center;
+  }
+
+  #mapa.maps {
+    height: 300px;
+  }
+}
+
+@media (max-width: 760px) {
+  #pagina-manutencoes .indicadores {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cabecalho-agendamento,
+  .bloco-manutencao .coluna-mapa,
+  .bloco-manutencao .coluna-campos,
+  .bloco-manutencao .coluna-preco {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bloco-manutencao {
+    border-radius: 7px;
+  }
+
+  .bloco-manutencao .linha-dupla {
     grid-template-columns: 1fr;
+  }
+
+  .mapa-topo .quantidade-unidades {
+    display: none;
+  }
+
+  #mapa.maps {
+    height: 245px;
+  }
+
+  .bloco-manutencao .resumo-preco {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
   }
 }
