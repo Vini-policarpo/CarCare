@@ -245,6 +245,7 @@ $voltar = $busca !== '' ? 'veiculos.php?busca=' . urlencode($busca) : 'veiculos.
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Veículos | CarCare</title>
+  <link rel="icon" href="imagens/carcare-favicon.png">
   <link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
