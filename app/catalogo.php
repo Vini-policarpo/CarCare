@@ -47,6 +47,7 @@ $pecas = $pdo->query('SELECT * FROM pecas ORDER BY nome')->fetchAll();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Serviços e peças | CarCare</title>
+  <link rel="icon" href="imagens/carcare-favicon.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

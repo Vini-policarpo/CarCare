@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CarCare: organize veículos, manutenções e o histórico de serviços em um só lugar.">
   <title>CarCare | Manutenção veicular organizada</title>
+  <link rel="icon" href="imagens/carcare-favicon.png">
   <link rel="stylesheet" href="css/apresentacao.css">
 </head>
 
